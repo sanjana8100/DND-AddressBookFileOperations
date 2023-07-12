@@ -12,7 +12,7 @@ namespace AddressBookFileIO
 {
     public class AddressBook
     {
-        List<Contact> ContactList = new List<Contact>();
+        public List<Contact> ContactList = new List<Contact>();
         ValidationMethods validationMethods = new ValidationMethods();
 
         string path = "C:\\Users\\INS 5570\\source\\repos\\AddressBookFileIO\\AddressBookFileIO\\JSONFile.json";
@@ -64,7 +64,7 @@ namespace AddressBookFileIO
 
             foreach (Contact c in ContactList)
             {
-                if (c.phone == phone || c.name == name)
+                if (c.Phone == phone || c.Name == name)
                 {
                     throw new DuplicateContactException("DUPLICATE CONTACT FOUND!!! Please add contact with different attributes.");
                 }
@@ -80,7 +80,7 @@ namespace AddressBookFileIO
             for (int index = 0; index < ContactList.Count; index++)
             {
                 Contact contact = ContactList[index];
-                if (editName.Equals(contact.name))
+                if (editName.Equals(contact.Name))
                 {
                     switch (editType)
                     {
@@ -90,7 +90,7 @@ namespace AddressBookFileIO
                                 Console.WriteLine("INVALID NAME!!! Enter the valid data...\n");
                                 return null;
                             }
-                            contact.name = newData;
+                            contact.Name = newData;
                             break;
                         case 2:
                             if (!validationMethods.ValidateEmail(newData))
@@ -98,7 +98,7 @@ namespace AddressBookFileIO
                                 Console.WriteLine("INVALID EMAIL!!! Enter the valid data...\n");
                                 return null;
                             }
-                            contact.email = newData;
+                            contact.Email = newData;
                             break;
                         case 3:
                             if (!validationMethods.ValidatePhoneNumber(newData))
@@ -106,13 +106,13 @@ namespace AddressBookFileIO
                                 Console.WriteLine("INVALID PHONE NUMBER!!! Enter the valid data...\n");
                                 return null;
                             }
-                            contact.phone = newData;
+                            contact.Phone = newData;
                             break;
                         case 4:
-                            contact.state = newData;
+                            contact.State = newData;
                             break;
                         case 5:
-                            contact.city = newData;
+                            contact.City = newData;
                             break;
                         case 6:
                             if (!validationMethods.ValidateZIP(newData))
@@ -120,7 +120,7 @@ namespace AddressBookFileIO
                                 Console.WriteLine("INVALID ZIP CODE!!! Enter the valid data...\n");
                                 return null;
                             }
-                            contact.zipcode = newData;
+                            contact.Zipcode = newData;
                             break;
                         default:
                             Console.WriteLine("Enter a valid field!!!");
@@ -140,7 +140,7 @@ namespace AddressBookFileIO
             for (int index = 0; index < ContactList.Count; index++)
             {
                 Contact contact = ContactList[index];
-                if (deleteName == contact.name)
+                if (deleteName == contact.Name)
                 {
                     ContactList.Remove(contact);
                     Console.WriteLine("Contact Deleted!!!");
@@ -155,7 +155,7 @@ namespace AddressBookFileIO
             for (int index = 0; index < ContactList.Count; index++)
             {
                 Contact contact = ContactList[index];
-                if (displayName == contact.name)
+                if (displayName == contact.Name)
                 {
                     Console.WriteLine("Details of the Contact: ");
                     Console.WriteLine(contact);
@@ -180,7 +180,7 @@ namespace AddressBookFileIO
         public void AddToCSVFile()
         {
             string path = "C:\\Users\\INS 5570\\source\\repos\\AddressBookFileIO\\AddressBookFileIO\\CSVFile.csv";
-            StreamWriter Writer = new StreamWriter(path, true);
+            StreamWriter Writer = new StreamWriter(path);
             CsvWriter CSVwriter = new CsvWriter(Writer, CultureInfo.InvariantCulture);
             CSVwriter.WriteRecords(ContactList);
             CSVwriter.Dispose();

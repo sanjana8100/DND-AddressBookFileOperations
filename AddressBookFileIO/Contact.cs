@@ -8,25 +8,25 @@ namespace AddressBookFileIO
 {
     public class Contact
     {
-        public string name;
-        public string email;
-        public string phone;
-        public string state;
-        public string city;
-        public string zipcode;
+        public string Name { set; get; }
+        public string Email { set; get; }
+        public string Phone { set; get; }
+        public string State { set; get; }
+        public string City { set; get; }
+        public string Zipcode { set; get; }
 
         public Contact(string name, string email, string phone, string state, string city, string zipcode)
         {
-            this.name = name;
-            this.email = email;
-            this.phone = phone;
-            this.state = state;
-            this.city = city;
-            this.zipcode = zipcode;
+            this.Name = name;
+            this.Email = email;
+            this.Phone = phone;
+            this.State = state;
+            this.City = city;
+            this.Zipcode = zipcode;
         }
         public override string ToString()
         {
-            return $"Name: {name}\nEmail: {email}\nPhone: {phone}\nState: {state}\nCity: {city}\nZip: {zipcode}";
+            return $"Name: {Name}\nEmail: {Email}\nPhone: {Phone}\nState: {State}\nCity: {City}\nZip: {Zipcode}";
         }
     }
 }
